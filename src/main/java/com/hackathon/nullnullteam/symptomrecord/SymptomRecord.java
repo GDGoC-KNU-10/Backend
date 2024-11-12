@@ -37,7 +37,7 @@ public class SymptomRecord extends BaseTimeEntity {
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user")
+    @JoinColumn(name = "member_id")
     private Member member;
 
 }
