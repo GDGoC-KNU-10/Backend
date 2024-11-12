@@ -1,4 +1,4 @@
-package com.hackathon.nullnullteam.vitamin.repository;
+package com.hackathon.nullnullteam.vitamin.infrastructure.repository;
 
 import com.hackathon.nullnullteam.vitamin.Vitamin;
 import org.springframework.data.jpa.repository.JpaRepository;
