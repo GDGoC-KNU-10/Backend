@@ -29,8 +29,10 @@ public class SymptomRecordController {
 
     @PostMapping("")
     public GlobalResponse addSymptomRecord(
+            Long memberId,
             @RequestBody SymptomRecordRequest.Add request
             ){
+        symptomRecordService.addSymptomRecord(memberId, request.toCommand());
 
         return GlobalResponse.builder().message("증상 기록 추가가 완료되었습니다.").build();
 
@@ -62,7 +64,5 @@ public class SymptomRecordController {
         return PagingResponse.from(infoList.infos());
 
     }
-
-
 
 }
