@@ -10,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Service
@@ -25,7 +24,7 @@ public class SymptomRecordReaderService {
     }
 
     @Transactional(readOnly = true)
-    public Page<SymptomRecord> getMonthlySymptomListByMemberId(Member member, LocalDateTime startDate, LocalDateTime endDate, Pageable pageable){
+    public Page<SymptomRecord> getMonthlySymptomListByMember(Member member, LocalDateTime startDate, LocalDateTime endDate, Pageable pageable){
         return symptomRecordRepository.getAllByMemberAndCreatedAtBetween(member, startDate, endDate, pageable);
     }
 }

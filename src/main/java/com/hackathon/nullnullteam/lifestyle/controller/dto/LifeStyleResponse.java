@@ -5,6 +5,7 @@ import com.hackathon.nullnullteam.lifestyle.LifeStyleCategory;
 import com.hackathon.nullnullteam.lifestyle.MoodScore;
 import com.hackathon.nullnullteam.lifestyle.service.dto.LifeStyleModel;
 import lombok.Builder;
+import org.springframework.data.domain.Page;
 
 import java.time.LocalDate;
 
@@ -30,6 +31,17 @@ public class LifeStyleResponse {
                     .tomorrowGoal(model.tomorrowGoal())
                     .moodScore(model.moodScore())
                     .createdAt(model.createdAt())
+                    .build();
+        }
+    }
+
+    @Builder
+    public record Infos(
+        Page<LifeStyleResponse.Info> infos
+    ){
+        public static LifeStyleResponse.Infos from(Page<LifeStyleModel.Info> infoList) {
+            return Infos.builder()
+                    .infos(infoList.map(LifeStyleResponse.Info::from))
                     .build();
         }
     }

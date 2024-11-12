@@ -32,6 +32,5 @@ public class LifeStyleModel {
                     .createdAt(lifeStyle.getCreatedAt().toLocalDate())
                     .build();
         }
-
     }
 }
