@@ -28,7 +28,7 @@ public class VitaminService {
     public void addVitamin(Long memberId, VitaminCommand.Add command){
         Member member = memberReaderService.getMemberById(memberId);
 
-        Vitamin vitamin = command.toEntity();
+        Vitamin vitamin = command.toEntity(member);
 
         vitaminWriterService.save(vitamin);
     }
