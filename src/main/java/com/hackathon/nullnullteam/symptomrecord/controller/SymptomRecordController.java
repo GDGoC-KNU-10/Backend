@@ -4,7 +4,10 @@ import com.hackathon.nullnullteam.global.dto.GlobalResponse;
 import com.hackathon.nullnullteam.global.dto.PagingResponse;
 import com.hackathon.nullnullteam.symptomrecord.controller.dto.SymptomRecordRequest;
 import com.hackathon.nullnullteam.symptomrecord.controller.dto.SymptomRecordResponse;
+import com.hackathon.nullnullteam.symptomrecord.service.SymptomRecordService;
+import com.hackathon.nullnullteam.symptomrecord.service.dto.SymptomRecordModel;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -22,6 +25,8 @@ import java.time.LocalDate;
 @RequestMapping("/api/symptom")
 public class SymptomRecordController {
 
+    private final SymptomRecordService symptomRecordService;
+
     @PostMapping("")
     public GlobalResponse addSymptomRecord(
             @RequestBody SymptomRecordRequest.Add request
@@ -33,10 +38,14 @@ public class SymptomRecordController {
 
     @GetMapping("/record")
     public PagingResponse<SymptomRecordResponse.Info> getAllSymptomRecord(
-            @PageableDefault(page = 0, size = 10, sort = "createdAt", direction = Sort.Direction.ASC) Pageable pageable
+            Long memberId,
+            @PageableDefault(page = 0, size = 10, sort = "startDate", direction = Sort.Direction.ASC) Pageable pageable
     ){
+        Page<SymptomRecordModel.Info> allSymptomRecord = symptomRecordService.getAllSymptomRecord(memberId, pageable);
 
-        return null;
+        SymptomRecordResponse.Infos infoList = SymptomRecordResponse.Infos.from(allSymptomRecord);
+
+        return PagingResponse.from(infoList.infos());
 
     }
 
@@ -49,6 +58,7 @@ public class SymptomRecordController {
         return null;
 
     }
+
 
 
 }

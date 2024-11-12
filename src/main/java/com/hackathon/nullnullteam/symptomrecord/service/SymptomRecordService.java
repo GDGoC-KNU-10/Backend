@@ -36,7 +36,6 @@ public class SymptomRecordService {
 
         return symptomRecordPage.map(SymptomRecordModel.Info::from);
 
-
     }
 
 
