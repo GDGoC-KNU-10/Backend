@@ -12,4 +12,11 @@ public enum Gender {
     Gender(String description) {
         this.description = description;
     }
+
+    public static Gender fromString(String gender) {
+        if (gender.equals("male")) {
+            return MALE;
+        }
+        return FEMALE;
+    }
 }
