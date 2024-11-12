@@ -57,7 +57,7 @@ public class SymptomRecordService {
             startDate = date.withDayOfMonth(1).atStartOfDay();
             endDate = date.withDayOfMonth(date.lengthOfMonth()).atTime(LocalTime.MAX);
         }
-        Page<SymptomRecord> symptomRecordList = symptomRecordReaderService.getMonthlySymptomListByMemberId(member, startDate, endDate, pageable);
+        Page<SymptomRecord> symptomRecordList = symptomRecordReaderService.getMonthlySymptomListByMember(member, startDate, endDate, pageable);
         return symptomRecordList.map(SymptomRecordModel.Info::from);
 
     }
