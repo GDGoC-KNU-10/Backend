@@ -51,11 +51,15 @@ public class SymptomRecordController {
 
     @GetMapping("/record/monthly")
     public PagingResponse<SymptomRecordResponse.Info> getMonthlySymptomRecord(
-            @RequestParam(name = "page", defaultValue = "0") int page,
-            @RequestParam(name = "size", defaultValue = "10") int size,
+            Long memberId,
+            @PageableDefault(page = 0, size = 10, sort = "startDate", direction = Sort.Direction.ASC) Pageable pageable,
             @RequestParam(name = "date", required = false) LocalDate date
     ) {
-        return null;
+        Page<SymptomRecordModel.Info> montlySymptomRecord = symptomRecordService.getMontlySymptomRecord(memberId, date, pageable);
+
+        SymptomRecordResponse.Infos infoList = SymptomRecordResponse.Infos.from(montlySymptomRecord);
+
+        return PagingResponse.from(infoList.infos());
 
     }
 
