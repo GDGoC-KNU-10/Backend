@@ -27,11 +27,11 @@ public class HospitalStatistics extends BaseTimeEntity {
 
     private String name;
     private Integer amount;
-    private String result;
+    private ResultType result;
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user")
+    @JoinColumn(name = "member_id")
     private Member member;
 
 }

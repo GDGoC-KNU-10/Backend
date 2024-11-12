@@ -42,7 +42,7 @@ public class LifeStyle extends BaseTimeEntity {
     private MoodScore moodScore;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user")
+    @JoinColumn(name = "member_id")
     private Member member;
 
 }
