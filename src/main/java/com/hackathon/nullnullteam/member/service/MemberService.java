@@ -41,6 +41,7 @@ public class MemberService {
             });
 
         String token = jwtProvider.createToken(member.getId(), member.getEmail());
+        System.out.println(token);
         return token;
     }
 }

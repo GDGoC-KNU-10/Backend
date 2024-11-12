@@ -31,9 +31,6 @@ public class AnxietyResultRecord extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "start_date")
-    private LocalDate startDate;
-
     @Column(name = "anxiety_score")
     private Integer anxietyScore;
 
