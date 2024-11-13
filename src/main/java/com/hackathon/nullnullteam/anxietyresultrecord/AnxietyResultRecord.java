@@ -39,7 +39,7 @@ public class AnxietyResultRecord extends BaseTimeEntity {
     private AnxietyLevel anxietyLevel;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user")
+    @JoinColumn(name = "member_id")
     private Member member;
 
 }

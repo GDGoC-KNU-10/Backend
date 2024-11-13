@@ -1,5 +1,6 @@
 package com.hackathon.nullnullteam.symptomrecord.controller;
 
+import com.hackathon.nullnullteam.global.annotation.Authenticate;
 import com.hackathon.nullnullteam.global.dto.GlobalResponse;
 import com.hackathon.nullnullteam.global.dto.PagingResponse;
 import com.hackathon.nullnullteam.symptomrecord.controller.dto.SymptomRecordRequest;
@@ -29,7 +30,7 @@ public class SymptomRecordController {
 
     @PostMapping("")
     public GlobalResponse addSymptomRecord(
-            Long memberId,
+            @Authenticate Long memberId,
             @RequestBody SymptomRecordRequest.Add request
             ){
         symptomRecordService.addSymptomRecord(memberId, request.toCommand());
@@ -40,7 +41,7 @@ public class SymptomRecordController {
 
     @GetMapping("/record")
     public PagingResponse<SymptomRecordResponse.Info> getAllSymptomRecord(
-            Long memberId,
+            @Authenticate Long memberId,
             @PageableDefault(page = 0, size = 10, sort = "startDate", direction = Sort.Direction.ASC) Pageable pageable
     ){
         Page<SymptomRecordModel.Info> allSymptomRecord = symptomRecordService.getAllSymptomRecord(memberId, pageable);
@@ -53,7 +54,7 @@ public class SymptomRecordController {
 
     @GetMapping("/record/monthly")
     public PagingResponse<SymptomRecordResponse.Info> getMonthlySymptomRecord(
-            Long memberId,
+            @Authenticate Long memberId,
             @PageableDefault(page = 0, size = 10) Pageable pageable,
             @RequestParam(name = "date", required = false) LocalDate date
     ) {

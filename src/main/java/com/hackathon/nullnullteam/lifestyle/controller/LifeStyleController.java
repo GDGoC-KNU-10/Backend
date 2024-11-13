@@ -1,5 +1,6 @@
 package com.hackathon.nullnullteam.lifestyle.controller;
 
+import com.hackathon.nullnullteam.global.annotation.Authenticate;
 import com.hackathon.nullnullteam.global.dto.GlobalResponse;
 import com.hackathon.nullnullteam.global.dto.PagingResponse;
 import com.hackathon.nullnullteam.lifestyle.controller.dto.LifeStyleRequest;
@@ -24,7 +25,7 @@ public class LifeStyleController {
 
     @PostMapping("")
     public GlobalResponse addLifeStyle(
-            Long memberId,
+            @Authenticate Long memberId,
             @RequestBody LifeStyleRequest.Add request
             ){
         lifeStyleService.addLifeStyle(memberId, request.toCommand());
@@ -34,7 +35,7 @@ public class LifeStyleController {
 
     @GetMapping("/{lifestyle-id}")
     public LifeStyleResponse.Info getLifeStyle(
-            Long memberId,
+            @Authenticate Long memberId,
             @PathVariable("lifestyle-id") Long lifestyleId
     ){
         LifeStyleModel.Info lifeStyle = lifeStyleService.getLifeStyle(memberId, lifestyleId);
@@ -43,7 +44,7 @@ public class LifeStyleController {
 
     @GetMapping("/record")
     public PagingResponse<LifeStyleResponse.Info> getAllLifeStyles(
-            Long memberId,
+            @Authenticate Long memberId,
             @PageableDefault(page = 0, size = 10, sort = "createdAt", direction = Sort.Direction.ASC)
             Pageable pageable){
         Page<LifeStyleModel.Info> allLifeStyles = lifeStyleService.getAllLifeStyles(memberId, pageable);
@@ -55,7 +56,7 @@ public class LifeStyleController {
 
     @GetMapping("/record/monthly")
     public PagingResponse<LifeStyleResponse.Info> getMonthlyLifeStyles(
-            Long memberId,
+            @Authenticate Long memberId,
             @PageableDefault(page = 0, size = 10) Pageable pageable,
             @RequestParam(name = "date", required = false) LocalDate date
     ){

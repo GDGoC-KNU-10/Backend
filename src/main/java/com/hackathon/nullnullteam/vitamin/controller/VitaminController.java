@@ -1,5 +1,6 @@
 package com.hackathon.nullnullteam.vitamin.controller;
 
+import com.hackathon.nullnullteam.global.annotation.Authenticate;
 import com.hackathon.nullnullteam.global.dto.GlobalResponse;
 import com.hackathon.nullnullteam.global.dto.PagingResponse;
 import com.hackathon.nullnullteam.vitamin.controller.dto.VitaminRequest;
@@ -24,7 +25,7 @@ public class VitaminController {
 
     @PostMapping("")
     public GlobalResponse addVitamin(
-            Long memberId,
+            @Authenticate Long memberId,
             @RequestBody VitaminRequest.Add request
     ){
         vitaminService.addVitamin(memberId, request.toCommand());
@@ -32,7 +33,7 @@ public class VitaminController {
     }
     @GetMapping("/record")
     public PagingResponse<VitaminResponse.Info> getAllVitamins(
-            Long memberId,
+            @Authenticate Long memberId,
             @PageableDefault(page = 0, size = 10, sort = "createdAt", direction = Sort.Direction.ASC) Pageable pageable
     ) {
         Page<VitaminModel.Info> allVitamins = vitaminService.getAllVitamins(memberId, pageable);
@@ -42,7 +43,7 @@ public class VitaminController {
 
     @GetMapping("/record/monthly")
     public PagingResponse<VitaminResponse.Info> getMonthlyVitamins(
-            Long memberId,
+            @Authenticate Long memberId,
             @PageableDefault(page = 0, size = 10) Pageable pageable,
             @RequestParam(name = "date", required = false) LocalDate date
     ) {

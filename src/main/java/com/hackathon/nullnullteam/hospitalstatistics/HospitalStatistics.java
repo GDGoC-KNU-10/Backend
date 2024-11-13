@@ -3,6 +3,8 @@ package com.hackathon.nullnullteam.hospitalstatistics;
 import com.hackathon.nullnullteam.global.entity.BaseTimeEntity;
 import com.hackathon.nullnullteam.member.Member;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,6 +29,7 @@ public class HospitalStatistics extends BaseTimeEntity {
 
     private String name;
     private Integer amount;
+    @Enumerated(EnumType.STRING)
     private ResultType result;
     private String description;
 
