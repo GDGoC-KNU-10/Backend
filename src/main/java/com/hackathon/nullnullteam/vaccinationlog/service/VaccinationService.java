@@ -18,7 +18,7 @@ public class VaccinationService {
     private final VaccinationRecommendRepository vaccinationRecommendRepository;
     private final MemberReaderService memberReaderService;
 
-    public List<VaccinationRecommendDto> getVaccinationLogs(Long memberId) {
+    public List<VaccinationRecommendDto> getVaccinationRecommends(Long memberId) {
         Member member = memberReaderService.getMemberById(memberId);
 
         // 1. 유저명으로 예방접종 로그에서 예방접종 이름 목록 조회
@@ -30,8 +30,10 @@ public class VaccinationService {
             vaccinationRecommendRepository.findByVaccineName(log.getVaccinationName()).ifPresent(recommendations::add);
         }
 
-        System.out.println("r" + recommendations);
-
         return recommendations;
+    }
+
+    public VaccinationRecommendDto getVaccinationRecommend(Long id) {
+        return vaccinationReaderService.getVaccinationRecommendById(id);
     }
 }
