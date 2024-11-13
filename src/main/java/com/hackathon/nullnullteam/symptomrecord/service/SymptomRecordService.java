@@ -25,7 +25,7 @@ public class SymptomRecordService {
     private final SymptomRecordWriterService symptomRecordWriterService;
 
     @Transactional
-    public void addSymptomRecord(Long memberId, SymptomRecordCommand.Add command){
+    public void addSymptomRecord(Long memberId, SymptomRecordCommand.Add command) {
         Member member = memberReaderService.getMemberById(memberId);
 
         SymptomRecord symptomRecord = command.toEntity(member);
@@ -34,7 +34,7 @@ public class SymptomRecordService {
     }
 
     @Transactional(readOnly = true)
-    public Page<SymptomRecordModel.Info> getAllSymptomRecord(Long memberId, Pageable pageable){
+    public Page<SymptomRecordModel.Info> getAllSymptomRecord(Long memberId, Pageable pageable) {
         Member member = memberReaderService.getMemberById(memberId);
 
         Page<SymptomRecord> symptomRecordPage = symptomRecordReaderService.getSymptomListByMember(member, pageable);
@@ -44,7 +44,7 @@ public class SymptomRecordService {
     }
 
     @Transactional(readOnly = true)
-    public Page<SymptomRecordModel.Info> getMontlySymptomRecord(Long memberId, LocalDate date, Pageable pageable){
+    public Page<SymptomRecordModel.Info> getMontlySymptomRecord(Long memberId, LocalDate date, Pageable pageable) {
         Member member = memberReaderService.getMemberById(memberId);
 
         LocalDateTime startDate;

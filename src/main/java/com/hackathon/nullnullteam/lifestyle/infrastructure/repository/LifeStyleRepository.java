@@ -2,7 +2,6 @@ package com.hackathon.nullnullteam.lifestyle.infrastructure.repository;
 
 import com.hackathon.nullnullteam.lifestyle.LifeStyle;
 import com.hackathon.nullnullteam.member.Member;
-import com.hackathon.nullnullteam.symptomrecord.SymptomRecord;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

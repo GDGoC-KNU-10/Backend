@@ -1,5 +1,6 @@
 package com.hackathon.nullnullteam.hospitalstatistics.controller;
 
+import com.hackathon.nullnullteam.global.annotation.Authenticate;
 import com.hackathon.nullnullteam.global.dto.GlobalResponse;
 import com.hackathon.nullnullteam.global.dto.PagingResponse;
 import com.hackathon.nullnullteam.hospitalstatistics.controller.dto.HospitalStatisticsRequest;
@@ -11,7 +12,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 
@@ -23,7 +30,7 @@ public class HospitalStatisticsController {
 
     @PostMapping("")
     public GlobalResponse addHospitalStatistics(
-            Long memberId,
+            @Authenticate Long memberId,
             @RequestBody HospitalStatisticsRequest.Add request
     ) {
         hospitalStatisticsService.addHospitalStatistics(memberId, request.toCommand());
@@ -32,7 +39,7 @@ public class HospitalStatisticsController {
 
     @GetMapping("/{hospital-id}")
     public HospitalStatisticsResponse.Info getHospitalStatistics(
-            Long memberId,
+            @Authenticate Long memberId,
             @PathVariable("hospital-id") Long hospitalStatisticsId
     ) {
         HospitalStatisticsModel.Info hospitalStatistics =
@@ -42,7 +49,7 @@ public class HospitalStatisticsController {
 
     @GetMapping("/record")
     public PagingResponse<HospitalStatisticsResponse.Info> getAllHospitalStatistics(
-            Long memberId,
+            @Authenticate Long memberId,
             @PageableDefault(page = 0, size = 10, sort = "createdAt", direction = Sort.Direction.ASC)
             Pageable pageable
     ) {
@@ -55,7 +62,7 @@ public class HospitalStatisticsController {
 
     @GetMapping("/record/monthly")
     public PagingResponse<HospitalStatisticsResponse.Info> getMonthlyHospitalStatistics(
-            Long memberId,
+            @Authenticate Long memberId,
             @PageableDefault(page = 0, size = 10) Pageable pageable,
             @RequestParam(name = "date", required = false) LocalDate date
     ) {

@@ -19,8 +19,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Entity
 @Getter
 @Builder
@@ -39,7 +37,7 @@ public class AnxietyResultRecord extends BaseTimeEntity {
     private AnxietyLevel anxietyLevel;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user")
+    @JoinColumn(name = "member_id")
     private Member member;
 
 }

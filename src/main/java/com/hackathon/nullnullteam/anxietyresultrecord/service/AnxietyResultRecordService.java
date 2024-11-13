@@ -1,12 +1,12 @@
 package com.hackathon.nullnullteam.anxietyresultrecord.service;
 
 import com.hackathon.nullnullteam.anxietyresultrecord.AnxietyResultRecord;
-import com.hackathon.nullnullteam.anxietyresultrecord.infrastructure.repository.AnxietyResultRecordRepository;
 import com.hackathon.nullnullteam.anxietyresultrecord.service.dto.AnxietyResultRecordModel;
 import com.hackathon.nullnullteam.anxietyresultrecord.service.dto.AnxietyResultRecordModel.Info;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor

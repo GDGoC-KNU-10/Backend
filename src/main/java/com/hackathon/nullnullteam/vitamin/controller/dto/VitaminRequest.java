@@ -11,8 +11,8 @@ public class VitaminRequest {
             String vitaminName,
             IntakeFrequency intakeFrequency,
             String oneTakeAmount
-    ){
-        public VitaminCommand.Add toCommand(){
+    ) {
+        public VitaminCommand.Add toCommand() {
             return VitaminCommand.Add.builder()
                     .vitaminName(vitaminName)
                     .intakeFrequency(intakeFrequency)

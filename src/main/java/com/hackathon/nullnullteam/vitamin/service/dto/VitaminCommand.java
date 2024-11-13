@@ -12,14 +12,14 @@ public class VitaminCommand {
             String vitaminName,
             IntakeFrequency intakeFrequency,
             String oneTakeAmount
-    ){
-      public Vitamin toEntity(Member member){
-          return Vitamin.builder()
-                  .vitaminName(vitaminName)
-                  .intakeFrequency(intakeFrequency)
-                  .onetakeAmount(oneTakeAmount)
-                  .member(member)
-                  .build();
-      }
+    ) {
+        public Vitamin toEntity(Member member) {
+            return Vitamin.builder()
+                    .vitaminName(vitaminName)
+                    .intakeFrequency(intakeFrequency)
+                    .onetakeAmount(oneTakeAmount)
+                    .member(member)
+                    .build();
+        }
     }
 }

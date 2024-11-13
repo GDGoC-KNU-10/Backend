@@ -13,9 +13,9 @@ public class SymptomRecordCommand {
             String description,
             String symptomName,
             LocalDate startDate
-    ){
-        public SymptomRecord toEntity(Member member){
-            return  SymptomRecord.builder()
+    ) {
+        public SymptomRecord toEntity(Member member) {
+            return SymptomRecord.builder()
                     .symptomName(symptomName)
                     .description(description)
                     .startDate(startDate)

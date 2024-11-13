@@ -14,7 +14,7 @@ public class SymptomRecordResponse {
             LocalDate startDate,
             String description,
             String symptomName
-    ){
+    ) {
         public static SymptomRecordResponse.Info from(SymptomRecordModel.Info model) {
             return Info.builder()
                     .userId(model.userId())
@@ -29,8 +29,8 @@ public class SymptomRecordResponse {
     @Builder
     public record Infos(
             Page<SymptomRecordResponse.Info> infos
-    ){
-        public static SymptomRecordResponse.Infos from(Page<SymptomRecordModel.Info> infoList){
+    ) {
+        public static SymptomRecordResponse.Infos from(Page<SymptomRecordModel.Info> infoList) {
             return Infos.builder()
                     .infos(infoList.map(SymptomRecordResponse.Info::from))
                     .build();

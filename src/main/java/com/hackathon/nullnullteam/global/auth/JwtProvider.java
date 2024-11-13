@@ -8,8 +8,9 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.UnsupportedJwtException;
-import java.util.Date;
 import org.springframework.stereotype.Component;
+
+import java.util.Date;
 
 @Component
 public class JwtProvider {

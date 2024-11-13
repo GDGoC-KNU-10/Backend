@@ -13,8 +13,8 @@ public class SymptomRecordModel {
             LocalDate startDate,
             String description,
             String symptomName
-    ){
-        public static SymptomRecordModel.Info from(SymptomRecord symptomRecord){
+    ) {
+        public static SymptomRecordModel.Info from(SymptomRecord symptomRecord) {
             return Info.builder()
                     .userId(symptomRecord.getMember().getId())
                     .startDate(symptomRecord.getStartDate())
