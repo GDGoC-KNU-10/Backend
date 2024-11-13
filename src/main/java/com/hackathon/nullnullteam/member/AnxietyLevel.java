@@ -14,4 +14,15 @@ public enum AnxietyLevel {
     AnxietyLevel(String description) {
         this.description = description;
     }
+
+    public static AnxietyLevel fromString(int count) {
+        if (count <= 5) {
+            return LOW;
+        } else if (count <= 10) {
+            return MEDIUM;
+        } else if (count <= 15) {
+            return HIGH;
+        }
+        return VERY_HIGH;
+    }
 }
