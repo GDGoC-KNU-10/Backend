@@ -15,8 +15,8 @@ import java.util.Date;
 @Component
 public class JwtProvider {
 
-    private final long validityInMilliseconds = 60 * 60 * 1000;
-    private final String secretKey = "aefewgthrtbffsfsdafwfqqqdqefewfsvawdqdwdqwfqeggdshshafda";
+    private long validityInMilliseconds = 60 * 60 * 1000 * 10;
+    private String secretKey = "aefewgthrtbffsfsdafwfqqqdqefewfsvawdqdwdqwfqeggdshshafda";
 
     public String createToken(Long id, String email) {
         Date now = new Date();
