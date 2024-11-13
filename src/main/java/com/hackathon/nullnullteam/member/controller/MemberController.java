@@ -22,18 +22,18 @@ public class MemberController {
         String loginUrl = memberService.getCodeUrl();
 
         return ResponseEntity.status(HttpStatus.SEE_OTHER)
-            .header("location", loginUrl)
-            .build();
+                .header("location", loginUrl)
+                .build();
     }
 
     @GetMapping("/callback")
     public ResponseEntity<GlobalResponse> registerMember(
-        @RequestParam("code") String code
+            @RequestParam("code") String code
     ) {
         String token = memberService.register(code);
 
         return ResponseEntity.status(HttpStatus.CREATED)
-            .header("Authorization", token)
-            .body(GlobalResponse.builder().message("회원가입이 완료되었습니다.").build());
+                .header("Authorization", token)
+                .body(GlobalResponse.builder().message("회원가입이 완료되었습니다.").build());
     }
 }

@@ -1,6 +1,5 @@
 package com.hackathon.nullnullteam.lifestyle.controller.dto;
 
-import com.hackathon.nullnullteam.lifestyle.LifeStyle;
 import com.hackathon.nullnullteam.lifestyle.LifeStyleCategory;
 import com.hackathon.nullnullteam.lifestyle.MoodScore;
 import com.hackathon.nullnullteam.lifestyle.service.dto.LifeStyleModel;
@@ -20,7 +19,7 @@ public class LifeStyleResponse {
             String tomorrowGoal,
             MoodScore moodScore,
             LocalDate createdAt
-    ){
+    ) {
         public static LifeStyleResponse.Info from(LifeStyleModel.Info model) {
             return Info.builder()
                     .lifeStyleId(model.lifeStyleId())
@@ -37,8 +36,8 @@ public class LifeStyleResponse {
 
     @Builder
     public record Infos(
-        Page<LifeStyleResponse.Info> infos
-    ){
+            Page<LifeStyleResponse.Info> infos
+    ) {
         public static LifeStyleResponse.Infos from(Page<LifeStyleModel.Info> infoList) {
             return Infos.builder()
                     .infos(infoList.map(LifeStyleResponse.Info::from))

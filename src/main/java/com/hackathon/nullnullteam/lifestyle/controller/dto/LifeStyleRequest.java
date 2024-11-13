@@ -15,8 +15,8 @@ public class LifeStyleRequest {
             String worstThing,
             String tomorrowGoal,
             MoodScore moodScore
-    ){
-        public LifeStyleCommand.Add toCommand(){
+    ) {
+        public LifeStyleCommand.Add toCommand() {
             return LifeStyleCommand.Add.builder()
                     .category(category)
                     .todayStatus(todayStatus)

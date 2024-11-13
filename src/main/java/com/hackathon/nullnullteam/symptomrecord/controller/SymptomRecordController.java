@@ -32,7 +32,7 @@ public class SymptomRecordController {
     public GlobalResponse addSymptomRecord(
             @Authenticate Long memberId,
             @RequestBody SymptomRecordRequest.Add request
-            ){
+    ) {
         symptomRecordService.addSymptomRecord(memberId, request.toCommand());
 
         return GlobalResponse.builder().message("증상 기록 추가가 완료되었습니다.").build();
@@ -43,7 +43,7 @@ public class SymptomRecordController {
     public PagingResponse<SymptomRecordResponse.Info> getAllSymptomRecord(
             @Authenticate Long memberId,
             @PageableDefault(page = 0, size = 10, sort = "startDate", direction = Sort.Direction.ASC) Pageable pageable
-    ){
+    ) {
         Page<SymptomRecordModel.Info> allSymptomRecord = symptomRecordService.getAllSymptomRecord(memberId, pageable);
 
         SymptomRecordResponse.Infos infoList = SymptomRecordResponse.Infos.from(allSymptomRecord);

@@ -8,14 +8,15 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.UnsupportedJwtException;
-import java.util.Date;
 import org.springframework.stereotype.Component;
+
+import java.util.Date;
 
 @Component
 public class JwtProvider {
 
-    private long validityInMilliseconds = 60 * 60 * 1000;
-    private String secretKey = "aefewgthrtbffsfsdafwfqqqdqefewfsvawdqdwdqwfqeggdshshafda";
+    private final long validityInMilliseconds = 60 * 60 * 1000;
+    private final String secretKey = "aefewgthrtbffsfsdafwfqqqdqefewfsvawdqdwdqwfqeggdshshafda";
 
     public String createToken(Long id, String email) {
         Date now = new Date();

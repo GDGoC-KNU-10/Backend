@@ -19,7 +19,7 @@ public class LifeStyleModel {
             String tomorrowGoal,
             MoodScore moodScore,
             LocalDate createdAt
-    ){
+    ) {
         public static LifeStyleModel.Info from(LifeStyle lifeStyle) {
             return Info.builder()
                     .lifeStyleId(lifeStyle.getId())

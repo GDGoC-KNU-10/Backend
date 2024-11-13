@@ -19,12 +19,12 @@ public class SymptomRecordReaderService {
     private final SymptomRecordRepository symptomRecordRepository;
 
     @Transactional(readOnly = true)
-    public Page<SymptomRecord> getSymptomListByMember(Member member, Pageable pageable){
+    public Page<SymptomRecord> getSymptomListByMember(Member member, Pageable pageable) {
         return symptomRecordRepository.getAllByMember(member, pageable);
     }
 
     @Transactional(readOnly = true)
-    public Page<SymptomRecord> getMonthlySymptomListByMember(Member member, LocalDateTime startDate, LocalDateTime endDate, Pageable pageable){
+    public Page<SymptomRecord> getMonthlySymptomListByMember(Member member, LocalDateTime startDate, LocalDateTime endDate, Pageable pageable) {
         return symptomRecordRepository.getAllByMemberAndCreatedAtBetween(member, startDate, endDate, pageable);
     }
 }

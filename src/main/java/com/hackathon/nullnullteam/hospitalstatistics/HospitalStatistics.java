@@ -28,9 +28,12 @@ public class HospitalStatistics extends BaseTimeEntity {
     private Long id;
 
     private String name;
+
     private Integer amount;
+
     @Enumerated(EnumType.STRING)
     private ResultType result;
+
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)

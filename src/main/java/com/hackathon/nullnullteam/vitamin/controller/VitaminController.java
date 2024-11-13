@@ -12,7 +12,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 
@@ -27,10 +32,11 @@ public class VitaminController {
     public GlobalResponse addVitamin(
             @Authenticate Long memberId,
             @RequestBody VitaminRequest.Add request
-    ){
+    ) {
         vitaminService.addVitamin(memberId, request.toCommand());
         return GlobalResponse.builder().message("비타민 복용 현황을 추가하였습니다.").build();
     }
+
     @GetMapping("/record")
     public PagingResponse<VitaminResponse.Info> getAllVitamins(
             @Authenticate Long memberId,
