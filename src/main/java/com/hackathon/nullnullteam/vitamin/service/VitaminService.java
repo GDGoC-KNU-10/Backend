@@ -25,7 +25,7 @@ public class VitaminService {
     private final VitaminWriterService vitaminWriterService;
 
     @Transactional
-    public void addVitamin(Long memberId, VitaminCommand.Add command){
+    public void addVitamin(Long memberId, VitaminCommand.Add command) {
         Member member = memberReaderService.getMemberById(memberId);
 
         Vitamin vitamin = command.toEntity(member);

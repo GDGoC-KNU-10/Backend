@@ -14,7 +14,7 @@ public class SymptomRecordWriterService {
     private final SymptomRecordRepository symptomRecordRepository;
 
     @Transactional
-    public void save(SymptomRecord symptomRecord){
+    public void save(SymptomRecord symptomRecord) {
         symptomRecordRepository.save(symptomRecord);
     }
 }

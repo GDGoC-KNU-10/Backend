@@ -15,8 +15,8 @@ public class LifeStyleCommand {
             String worstThing,
             String tomorrowGoal,
             MoodScore moodScore
-    ){
-        public LifeStyle toEntity(){
+    ) {
+        public LifeStyle toEntity() {
             return LifeStyle.builder()
                     .category(category)
                     .todayStatus(todayStatus)

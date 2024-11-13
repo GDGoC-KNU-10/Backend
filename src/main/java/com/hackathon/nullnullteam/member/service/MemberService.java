@@ -35,10 +35,10 @@ public class MemberService {
 
         // Users 저장 및 중복 체크
         Member member = memberReaderService.findByEmail(kakaoAccount.email())
-            .orElseGet(() -> {
-                Member newMember = memberWriterService.saveMember(userInfoResponse);
-                return newMember;
-            });
+                .orElseGet(() -> {
+                    Member newMember = memberWriterService.saveMember(userInfoResponse);
+                    return newMember;
+                });
 
         String token = jwtProvider.createToken(member.getId(), member.getEmail());
         System.out.println(token);

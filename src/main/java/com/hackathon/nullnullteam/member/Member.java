@@ -32,5 +32,6 @@ public class Member extends BaseTimeEntity {
 
     private int age;
 
+    @Enumerated(EnumType.STRING)
     private AnxietyLevel anxietyLevel;
 }

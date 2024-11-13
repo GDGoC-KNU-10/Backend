@@ -12,8 +12,8 @@ public class SymptomRecordRequest {
             String description,
             String symptomName,
             LocalDate startDate
-    ){
-        public SymptomRecordCommand.Add toCommand(){
+    ) {
+        public SymptomRecordCommand.Add toCommand() {
             return SymptomRecordCommand.Add.builder()
                     .description(description)
                     .symptomName(symptomName)
