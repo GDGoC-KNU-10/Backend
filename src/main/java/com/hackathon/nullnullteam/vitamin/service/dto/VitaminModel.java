@@ -29,13 +29,13 @@ public class VitaminModel {
 
     @Builder
     public record DetailInfo(
-            String productName,
+            String vitaminName,
             String composition,
             String usage
     ){
         public static VitaminModel.DetailInfo from(VitaminInfoResponse.Item response){
             return DetailInfo.builder()
-                    .productName(response.prduct())
+                    .vitaminName(response.prduct())
                     .composition(response.sungsang())
                     .usage(response.srvUse())
                     .build();
