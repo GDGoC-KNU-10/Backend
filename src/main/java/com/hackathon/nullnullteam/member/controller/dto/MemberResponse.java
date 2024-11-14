@@ -1,8 +1,6 @@
 package com.hackathon.nullnullteam.member.controller.dto;
 
-import com.hackathon.nullnullteam.member.Member;
 import com.hackathon.nullnullteam.member.service.dto.MemberModel;
-import com.hackathon.nullnullteam.member.service.dto.MemberModel.Info;
 import lombok.Builder;
 
 public class MemberResponse {
@@ -18,6 +16,17 @@ public class MemberResponse {
                 .name(model.name())
                 .status(model.status())
                 .build();
+        }
+    }
+
+    @Builder
+    public record Login(
+            String jwt
+    ) {
+        public static MemberResponse.Login from(MemberModel.Login model) {
+            return MemberResponse.Login.builder()
+                    .jwt(model.jwt())
+                    .build();
         }
     }
 }
