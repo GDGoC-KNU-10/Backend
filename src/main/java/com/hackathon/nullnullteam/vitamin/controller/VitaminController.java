@@ -5,6 +5,7 @@ import com.hackathon.nullnullteam.global.dto.GlobalResponse;
 import com.hackathon.nullnullteam.global.dto.PagingResponse;
 import com.hackathon.nullnullteam.vitamin.controller.dto.VitaminRequest;
 import com.hackathon.nullnullteam.vitamin.controller.dto.VitaminResponse;
+import com.hackathon.nullnullteam.vitamin.infrastructure.apicaller.dto.VitaminInfoResponse;
 import com.hackathon.nullnullteam.vitamin.service.VitaminService;
 import com.hackathon.nullnullteam.vitamin.service.dto.VitaminModel;
 import lombok.RequiredArgsConstructor;
@@ -56,5 +57,12 @@ public class VitaminController {
         Page<VitaminModel.Info> monthlyVitamins = vitaminService.getMonthlyVitamins(memberId, date, pageable);
         VitaminResponse.Infos infoList = VitaminResponse.Infos.from(monthlyVitamins);
         return PagingResponse.from(infoList.infos());
+    }
+
+    @GetMapping("/info")
+    public VitaminModel.DetailInfo getVitaminInfo(
+            @RequestParam("searchName") String searchName
+    ){
+        return vitaminService.getVitaminInfo(searchName);
     }
 }

@@ -2,6 +2,7 @@ package com.hackathon.nullnullteam.vitamin.service.dto;
 
 import com.hackathon.nullnullteam.vitamin.IntakeFrequency;
 import com.hackathon.nullnullteam.vitamin.Vitamin;
+import com.hackathon.nullnullteam.vitamin.infrastructure.apicaller.dto.VitaminInfoResponse;
 import lombok.Builder;
 
 import java.time.LocalDate;
@@ -22,6 +23,21 @@ public class VitaminModel {
                     .intakeFrequency(vitamin.getIntakeFrequency())
                     .oneTakeAmount(vitamin.getOnetakeAmount())
                     .createdAt(vitamin.getCreatedAt().toLocalDate())
+                    .build();
+        }
+    }
+
+    @Builder
+    public record DetailInfo(
+            String productName,
+            String composition,
+            String usage
+    ){
+        public static VitaminModel.DetailInfo from(VitaminInfoResponse.Item response){
+            return DetailInfo.builder()
+                    .productName(response.prduct())
+                    .composition(response.sungsang())
+                    .usage(response.srvUse())
                     .build();
         }
     }

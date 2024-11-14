@@ -1,9 +1,12 @@
 package com.hackathon.nullnullteam.vitamin.service;
 
 import com.hackathon.nullnullteam.global.constants.DateConstants;
+import com.hackathon.nullnullteam.global.exception.EntityNotFoundException;
 import com.hackathon.nullnullteam.member.Member;
 import com.hackathon.nullnullteam.member.service.MemberReaderService;
 import com.hackathon.nullnullteam.vitamin.Vitamin;
+import com.hackathon.nullnullteam.vitamin.infrastructure.apicaller.VitaminApiCaller;
+import com.hackathon.nullnullteam.vitamin.infrastructure.apicaller.dto.VitaminInfoResponse;
 import com.hackathon.nullnullteam.vitamin.service.dto.VitaminCommand;
 import com.hackathon.nullnullteam.vitamin.service.dto.VitaminModel;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +26,7 @@ public class VitaminService {
     private final MemberReaderService memberReaderService;
     private final VitaminReaderService vitaminReaderService;
     private final VitaminWriterService vitaminWriterService;
+    private final VitaminApiCaller vitaminApiCaller;
 
     @Transactional
     public void addVitamin(Long memberId, VitaminCommand.Add command) {
@@ -64,6 +68,21 @@ public class VitaminService {
 
         Page<Vitamin> vitamins = vitaminReaderService.getMonthlyByMember(member, startDate, endDate, pageable);
         return vitamins.map(VitaminModel.Info::from);
+    }
+
+    @Transactional
+    public VitaminModel.DetailInfo getVitaminInfo(String searchName){
+        VitaminInfoResponse vitaminInfo = vitaminApiCaller.getVitaminInfo(searchName);
+
+        // null 체크와 빈 리스트 체크
+        if (vitaminInfo.body() == null
+                || vitaminInfo.body().items() == null
+                || vitaminInfo.body().items().isEmpty()) {
+            throw new EntityNotFoundException("비타민 정보를 찾을 수 없습니다.");
+        }
+
+        VitaminInfoResponse.Item firstItem = vitaminInfo.body().items().get(0).item();
+        return VitaminModel.DetailInfo.from(firstItem);
     }
 
 
