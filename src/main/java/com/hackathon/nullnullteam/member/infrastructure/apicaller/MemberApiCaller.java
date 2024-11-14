@@ -25,15 +25,12 @@ public class MemberApiCaller {
     private final KakaoProperties kakaoProperties;
     private final RestClient restClient;
 
-    @Value("${kakao.redirect-uri}")
-    private String redirectUri;
-
     public String createCodeUrl() {
-        String authUrl = "https://kauth.kakao.com/oauth/authorize";
+        String authUrl = kakaoProperties.authUrl();
 
         String url = UriComponentsBuilder.fromHttpUrl(authUrl)
-                .queryParam("client_id", "27053b55aed58a9387699a86941543cd")
-                .queryParam("redirect_uri", redirectUri)
+                .queryParam("client_id", kakaoProperties.clientId())
+                .queryParam("redirect_uri", kakaoProperties.redirectUri())
                 .queryParam("response_type", "code")
                 .queryParam("scope", "account_email,name,gender,birthyear")
                 .toUriString();
@@ -42,7 +39,7 @@ public class MemberApiCaller {
     }
 
     public TokenInfoResponse getAccessToken(String code) {
-        String tokenUrl = "https://kauth.kakao.com/oauth/token";
+        String tokenUrl = kakaoProperties.tokenUrl();
         LinkedMultiValueMap<String, String> body = createAccessBody(code);
 
         try {
@@ -64,14 +61,14 @@ public class MemberApiCaller {
     public LinkedMultiValueMap<String, String> createAccessBody(String code) {
         var body = new LinkedMultiValueMap<String, String>();
         body.add("grant_type", "authorization_code");
-        body.add("client_id", "27053b55aed58a9387699a86941543cd");
-        body.add("redirect_url", redirectUri);
+        body.add("client_id", kakaoProperties.clientId());
+        body.add("redirect_url", kakaoProperties.redirectUri());
         body.add("code", code);
         return body;
     }
 
     public UserInfoResponse extractUserInfo(String accessToken) {
-        String userInfoUrl = "https://kapi.kakao.com/v2/user/me";
+        String userInfoUrl = kakaoProperties.userInfoUrl();
 
         return restClient.get()
                 .uri(URI.create(userInfoUrl))
