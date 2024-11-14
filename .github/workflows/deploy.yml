@@ -5,11 +5,11 @@ on:
     branches:
       - main
       - dev
-env:
-  REDIRECT_URL: ${{ secrets.REDIRECT_URL }}
 
 jobs:
   deploy:
+    env:
+      REDIRECT_URL: ${{ secrets.REDIRECT_URL }}
     runs-on: ubuntu-latest
     steps:
       - name: Github Repository에 올린 파일들을 불러오기
