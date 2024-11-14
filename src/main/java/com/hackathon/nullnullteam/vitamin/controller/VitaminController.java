@@ -61,8 +61,9 @@ public class VitaminController {
 
     @GetMapping("/info")
     public VitaminModel.DetailInfo getVitaminInfo(
+            @Authenticate Long memberId,
             @RequestParam("searchName") String searchName
     ){
-        return vitaminService.getVitaminInfo(searchName);
+        return vitaminService.getVitaminInfo(memberId, searchName);
     }
 }

@@ -71,7 +71,10 @@ public class VitaminService {
     }
 
     @Transactional
-    public VitaminModel.DetailInfo getVitaminInfo(String searchName){
+    public VitaminModel.DetailInfo getVitaminInfo(Long memberId, String searchName){
+
+        Member member = memberReaderService.getMemberById(memberId);
+
         VitaminInfoResponse vitaminInfo = vitaminApiCaller.getVitaminInfo(searchName);
 
         // null 체크와 빈 리스트 체크
