@@ -7,7 +7,10 @@ import com.hackathon.nullnullteam.vaccinationlog.infrastructure.repository.Vacci
 import com.hackathon.nullnullteam.vaccinationlog.infrastructure.repository.dto.VaccinationRecommendDto;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,19 +21,19 @@ public class VaccinationService {
     private final VaccinationRecommendRepository vaccinationRecommendRepository;
     private final MemberReaderService memberReaderService;
 
-    public List<VaccinationRecommendDto> getVaccinationRecommends(Long memberId) {
+    public Page<VaccinationRecommendDto> getVaccinationRecommends(Long memberId, Pageable pageable) {
         Member member = memberReaderService.getMemberById(memberId);
 
         // 1. 유저명으로 예방접종 로그에서 예방접종 이름 목록 조회
         List<VaccinationLog> vaccinationLogs = vaccinationReaderService.getVaccinationLogs(member.getName());
 
-        // 2. 예방접종 이름으로 추천 데이터를 조회하여 리스트에 추가
-        List<VaccinationRecommendDto> recommendations = new ArrayList<>();
-        for (VaccinationLog log : vaccinationLogs) {
-            vaccinationRecommendRepository.findByVaccineName(log.getVaccinationName()).ifPresent(recommendations::add);
-        }
+        // 2. 예방접종 로그에서 예방접종 이름 목록 추출
+        List<String> vaccinationNames = vaccinationLogs.stream()
+            .map(VaccinationLog::getVaccinationName)
+            .collect(Collectors.toList());
 
-        return recommendations;
+        // 3. 예방접종 이름 목록으로 추천 데이터를 페이징 처리하여 조회
+        return vaccinationRecommendRepository.findByVaccineNamesWithPaging(vaccinationNames, pageable);
     }
 
     public VaccinationRecommendDto getVaccinationRecommend(Long id) {
