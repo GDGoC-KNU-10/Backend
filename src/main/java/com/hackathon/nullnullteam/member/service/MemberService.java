@@ -6,6 +6,7 @@ import com.hackathon.nullnullteam.member.infrastructure.apicaller.MemberApiCalle
 import com.hackathon.nullnullteam.member.infrastructure.apicaller.dto.KakaoAccount;
 import com.hackathon.nullnullteam.member.infrastructure.apicaller.dto.TokenInfoResponse;
 import com.hackathon.nullnullteam.member.infrastructure.apicaller.dto.UserInfoResponse;
+import com.hackathon.nullnullteam.member.service.dto.MemberModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,5 +44,10 @@ public class MemberService {
         String token = jwtProvider.createToken(member.getId(), member.getEmail());
         System.out.println(token);
         return token;
+    }
+
+    public MemberModel.Info getMemberInfo(Long memberId) {
+        Member member = memberReaderService.getMemberById(memberId);
+        return MemberModel.Info.from(member);
     }
 }
