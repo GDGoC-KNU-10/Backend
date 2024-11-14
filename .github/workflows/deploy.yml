@@ -28,7 +28,8 @@ jobs:
         run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Docker 이미지 생성
-        run: docker build -t nullnull-server .
+        run: docker build -t nullnull-server . \
+             -e REDIRECT_URL=${{ secrets.REDIRECT_URL }}
 
       - name: Docker 이미지에 Tag 붙이기
         run: docker tag nullnull-server ${{ secrets.DOCKERHUB_USERNAME }}/nullnull-server:latest
@@ -47,6 +48,5 @@ jobs:
             docker stop nullnull-server || true
             docker rm nullnull-server || true
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/nullnull-server:latest
-            docker run -d --name nullnull-server -p 8080:8080 ${{ secrets.DOCKERHUB_USERNAME }}/nullnull-server:latest \
-            -e REDIRECT_URL=${{ secrets.REDIRECT_URL }}
+            docker run -d --name nullnull-server -p 8080:8080 ${{ secrets.DOCKERHUB_USERNAME }}/nullnull-server:latest 
 
