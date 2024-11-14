@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class MemberReaderService {
@@ -15,10 +17,15 @@ public class MemberReaderService {
     private final MemberRepository memberRepository;
 
     @Transactional(readOnly = true)
-    public Member getMemberById(Long memberId){
+    public Member getMemberById(Long memberId) {
         return memberRepository.findById(memberId)
                 .orElseThrow(
                         () -> new EntityNotFoundException(MessageConstants.USER_NOT_FOUND_MESSAGE)
                 );
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<Member> findByEmail(String email) {
+        return memberRepository.findByEmail(email);
     }
 }
