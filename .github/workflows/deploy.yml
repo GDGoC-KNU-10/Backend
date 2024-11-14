@@ -7,7 +7,7 @@ on:
       - dev
 
 jobs:
-  deploy:
+  build:
     env:
       REDIRECT_URL: ${{ secrets.REDIRECT_URL }}
     runs-on: ubuntu-latest
