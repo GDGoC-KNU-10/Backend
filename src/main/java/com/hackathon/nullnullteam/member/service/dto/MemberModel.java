@@ -18,4 +18,14 @@ public class MemberModel {
                 .build();
         }
     }
+    @Builder
+    public record Login(
+            String jwt
+    ) {
+        public static Login from(String jwt) {
+            return Login.builder()
+                    .jwt(jwt)
+                    .build();
+        }
+    }
 }

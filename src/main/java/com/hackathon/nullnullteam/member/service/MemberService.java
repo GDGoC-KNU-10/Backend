@@ -26,7 +26,7 @@ public class MemberService {
     }
 
     @Transactional
-    public String register(String code) {
+    public MemberModel.Login register(String code) {
         // 토큰 발급
         TokenInfoResponse tokenResponse = memberApiCaller.getAccessToken(code);
         String accessToken = tokenResponse.accessToken();
@@ -43,7 +43,8 @@ public class MemberService {
 
         String token = jwtProvider.createToken(member.getId(), member.getEmail());
         System.out.println(token);
-        return token;
+
+        return MemberModel.Login.from(token);
     }
 
     public MemberModel.Info getMemberInfo(Long memberId) {

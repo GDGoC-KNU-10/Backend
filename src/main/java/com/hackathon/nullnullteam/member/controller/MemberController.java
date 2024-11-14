@@ -4,6 +4,7 @@ import com.hackathon.nullnullteam.global.annotation.Authenticate;
 import com.hackathon.nullnullteam.global.dto.GlobalResponse;
 import com.hackathon.nullnullteam.member.controller.dto.MemberResponse;
 import com.hackathon.nullnullteam.member.service.MemberService;
+import com.hackathon.nullnullteam.member.service.dto.MemberModel;
 import com.hackathon.nullnullteam.member.service.dto.MemberModel.Info;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -30,14 +31,15 @@ public class MemberController {
     }
 
     @GetMapping("/callback")
-    public ResponseEntity<GlobalResponse> registerMember(
+    public ResponseEntity<MemberResponse.Login> registerMember(
             @RequestParam("code") String code
     ) {
-        String token = memberService.register(code);
+        MemberModel.Login memberInfo = memberService.register(code);
+
 
         return ResponseEntity.status(HttpStatus.CREATED)
-                .header("Authorization", token)
-                .body(GlobalResponse.builder().message("회원가입이 완료되었습니다.").build());
+                .header("Authorization", memberInfo.jwt())
+                .body(MemberResponse.Login.from(memberInfo));
     }
 
     @GetMapping("/api/member")
