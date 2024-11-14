@@ -54,7 +54,7 @@ jobs:
           key: ${{ secrets.EC2_PRIVATE_KEY }}
           script_stop: true
           script: |
-            echo "REDIRECT_URL 환경변수: $REDIRECT_URL"
+            echo "REDIRECT_URL 환경변수:${{ secrets.REDIRECT_URL }}"
             docker stop nullnull-server || true
             docker rm nullnull-server || true
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/nullnull-server:latest
