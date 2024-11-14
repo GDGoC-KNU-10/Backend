@@ -26,7 +26,7 @@ public class MemberApiCaller {
 
     public String createCodeUrl() {
         String authUrl = "https://kauth.kakao.com/oauth/authorize";
-        String redirectUrl = "http://localhost:8080/api/member/callback";
+        String redirectUrl = "http://3.37.196.200:8080/api/member/callback";
 
         String url = UriComponentsBuilder.fromHttpUrl(authUrl)
                 .queryParam("client_id", "27053b55aed58a9387699a86941543cd")
@@ -59,7 +59,7 @@ public class MemberApiCaller {
     }
 
     public LinkedMultiValueMap<String, String> createAccessBody(String code) {
-        String redirectUrl = "http://localhost:8080/api/member/callback";
+        String redirectUrl = "http://3.37.196.200:8080/api/member/callback";
 
         var body = new LinkedMultiValueMap<String, String>();
         body.add("grant_type", "authorization_code");
