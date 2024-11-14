@@ -21,6 +21,14 @@ jobs:
           distribution: temurin
           java-version: 21
 
+      - name: GitHub 환경변수 출력
+        run: |
+          echo "REDIRECT_URL: $REDIRECT_URL"
+          echo "DOCKERHUB_USERNAME: $DOCKERHUB_USERNAME"
+          echo "DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}" # 비밀번호는 보안상 출력하지 않는 것이 좋습니다
+          echo "REDIRECT_URL: ${{ secrets.REDIRECT_URL }}"
+          echo "DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}"
+
       - name: 테스트 및 빌드하기
         run: |
           chmod +x ./gradlew
