@@ -6,6 +6,7 @@ import com.hackathon.nullnullteam.global.property.KakaoProperties;
 import com.hackathon.nullnullteam.member.infrastructure.apicaller.dto.TokenInfoResponse;
 import com.hackathon.nullnullteam.member.infrastructure.apicaller.dto.UserInfoResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -24,13 +25,15 @@ public class MemberApiCaller {
     private final KakaoProperties kakaoProperties;
     private final RestClient restClient;
 
+    @Value("${kakao.redirect-uri}")
+    private String redirectUri;
+
     public String createCodeUrl() {
         String authUrl = "https://kauth.kakao.com/oauth/authorize";
-        String redirectUrl = "http://localhost:8080/api/member/callback";
 
         String url = UriComponentsBuilder.fromHttpUrl(authUrl)
                 .queryParam("client_id", "27053b55aed58a9387699a86941543cd")
-                .queryParam("redirect_uri", redirectUrl)
+                .queryParam("redirect_uri", redirectUri)
                 .queryParam("response_type", "code")
                 .queryParam("scope", "account_email,name,gender,birthyear")
                 .toUriString();
@@ -59,12 +62,10 @@ public class MemberApiCaller {
     }
 
     public LinkedMultiValueMap<String, String> createAccessBody(String code) {
-        String redirectUrl = "http://localhost:8080/api/member/callback";
-
         var body = new LinkedMultiValueMap<String, String>();
         body.add("grant_type", "authorization_code");
         body.add("client_id", "27053b55aed58a9387699a86941543cd");
-        body.add("redirect_url", redirectUrl);
+        body.add("redirect_url", redirectUri);
         body.add("code", code);
         return body;
     }

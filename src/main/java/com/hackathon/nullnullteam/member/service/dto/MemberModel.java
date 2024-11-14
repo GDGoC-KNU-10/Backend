@@ -8,13 +8,17 @@ public class MemberModel {
     @Builder
     public record Info(
         String name,
-        String status
+        String status,
+        int age,
+        String gender
     ) {
 
         public static MemberModel.Info from(Member member) {
             return Info.builder()
                 .name(member.getName())
                 .status(member.getAnxietyLevel().getDescription())
+                .age(member.getAge())
+                .gender(member.getGender().getDescription())
                 .build();
         }
     }
