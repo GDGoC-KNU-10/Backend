@@ -21,22 +21,22 @@ public class VaccinationController {
 
     private final VaccinationService vaccinationService;
 
-    @GetMapping("")
-    public PagingResponse getVaccinationRecommends(
-        @Authenticate Long memberId,
-        @PageableDefault(page = 0, size = 10) Pageable pageable
-        ) {
-        Page<VaccinationRecommendDto> vaccinationRecommendDtos = vaccinationService.getVaccinationRecommends(memberId, pageable);
-        return PagingResponse.from(vaccinationRecommendDtos);
-    }
-
-    @GetMapping("/{vaccination-id}")
-    public VaccinationRecommendDto getVaccinationRecommend(
-        @Authenticate Long memberId,
-        @PathVariable("vaccination-id") Long vaccineId
-        ) {
-        VaccinationRecommendDto vaccinationRecommend = vaccinationService.getVaccinationRecommend(
-            vaccineId);
-        return vaccinationRecommend;
-    }
+//    @GetMapping("")
+//    public PagingResponse getVaccinationRecommends(
+//        @Authenticate Long memberId,
+//        @PageableDefault(page = 0, size = 10) Pageable pageable
+//        ) {
+//        Page<VaccinationRecommendDto> vaccinationRecommendDtos = vaccinationService.getVaccinationRecommends(memberId, pageable);
+//        return PagingResponse.from(vaccinationRecommendDtos);
+//    }
+//
+//    @GetMapping("/{vaccination-id}")
+//    public VaccinationRecommendDto getVaccinationRecommend(
+//        @Authenticate Long memberId,
+//        @PathVariable("vaccination-id") Long vaccineId
+//        ) {
+//        VaccinationRecommendDto vaccinationRecommend = vaccinationService.getVaccinationRecommend(
+//            vaccineId);
+//        return vaccinationRecommend;
+//    }
 }

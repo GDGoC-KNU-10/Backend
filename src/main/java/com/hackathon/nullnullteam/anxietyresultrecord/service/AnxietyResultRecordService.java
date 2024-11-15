@@ -6,14 +6,15 @@ import com.hackathon.nullnullteam.anxietyresultrecord.service.dto.AnxietyResultR
 import com.hackathon.nullnullteam.anxietyresultrecord.service.dto.AnxietyResultRecordModel.Info;
 import com.hackathon.nullnullteam.member.Member;
 import com.hackathon.nullnullteam.member.service.MemberReaderService;
-import com.hackathon.nullnullteam.vaccinationlog.infrastructure.repository.VaccinationRecommendRepository;
 import com.hackathon.nullnullteam.vaccinationlog.infrastructure.repository.dto.VaccinationRecommendDto;
 import com.hackathon.nullnullteam.vaccinationlog.service.VaccinationWriterService;
+import com.hackathon.nullnullteam.vaccinationrecommend.VaccinationRecommend;
+import com.hackathon.nullnullteam.vaccinationrecommend.infrastructure.repository.VaccinationRecommendRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -38,8 +39,7 @@ public class AnxietyResultRecordService {
         member.setAnxietyLevel(command.score());
 
         // 백신 추천 정보를 조회
-        List<VaccinationRecommendDto> vaccinationRecommendDtos = vaccinationRecommendRepository.findByAgeRange(
-            member.getAge());
+        List<VaccinationRecommend> vaccinationRecommendDtos = vaccinationRecommendRepository.findAllByStartAgeLessThanEqualAndEndAgeGreaterThanEqual(member.getAge());
 
         // 추천 백신 정보를 VaccinationLog 엔티티로 변환하여 저장
         vaccinationRecommendDtos.forEach(vaccinationRecommendDto -> {
