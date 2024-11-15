@@ -24,13 +24,14 @@ public class MemberApiCaller {
     private final ObjectMapper objectMapper;
     private final KakaoProperties kakaoProperties;
     private final RestClient restClient;
+    private final String redirectUri = "http://3.37.196.200:8080/api/member/callback";
 
     public String createCodeUrl() {
         String authUrl = kakaoProperties.authUrl();
 
         String url = UriComponentsBuilder.fromHttpUrl(authUrl)
                 .queryParam("client_id", kakaoProperties.clientId())
-                .queryParam("redirect_uri", kakaoProperties.redirectUri())
+                .queryParam("redirect_uri", redirectUri)
                 .queryParam("response_type", "code")
                 .queryParam("scope", "account_email,name,gender,birthyear")
                 .toUriString();
@@ -62,7 +63,7 @@ public class MemberApiCaller {
         var body = new LinkedMultiValueMap<String, String>();
         body.add("grant_type", "authorization_code");
         body.add("client_id", kakaoProperties.clientId());
-        body.add("redirect_url", kakaoProperties.redirectUri());
+        body.add("redirect_url", redirectUri);
         body.add("code", code);
         return body;
     }
