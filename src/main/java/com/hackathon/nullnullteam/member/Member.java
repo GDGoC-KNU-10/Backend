@@ -36,4 +36,8 @@ public class Member extends BaseTimeEntity {
     private AnxietyLevel anxietyLevel;
 
     private String profile;
+
+    public void setAnxietyLevel(int score) {
+        this.anxietyLevel = AnxietyLevel.fromString(score);
+    }
 }
