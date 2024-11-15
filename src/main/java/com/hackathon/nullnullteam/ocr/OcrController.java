@@ -1,6 +1,8 @@
 package com.hackathon.nullnullteam.ocr;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,12 +18,8 @@ public class OcrController {
     private final OcrService ocrService;
 
     @PostMapping("/extract-text")
-    public ResponseEntity<String> extractText(@RequestParam("file") MultipartFile file) {
-        String extractedText = ocrService.extractTextFromImage(file);
-        if (extractedText != null) {
-            return ResponseEntity.ok(extractedText);
-        } else {
-            return ResponseEntity.status(500).body("Failed to extract text.");
-        }
+    public List<String> extractText(@RequestParam("file") MultipartFile file) {
+        List<String> extractedText = ocrService.extractTextFromImage(file);
+        return extractedText;
     }
 }
