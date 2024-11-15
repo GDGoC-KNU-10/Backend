@@ -2,15 +2,23 @@
 
 ### 건강 불안 해소를 위한 통합 건강관리 플랫폼
 
+<br/> <br/>
+
 ![image](https://github.com/user-attachments/assets/c1a0ae65-0d17-4021-ab96-9c443436f910)
+
+<br/> <br/>
 
 ## 🏥CareMe의 한줄 소개
 
 UN의 지속가능발전목표(SDGs) 중 3번째 목표인 "건강과 웰빙" 달성과 현대인의 건강염려증 해소를 위해 시작된 CareMe는 체계적인 건강관리와 심리적 안정을 동시에 지원하는 플랫폼입니다.
 
+<br/> 
+
 ## ✨CareMe 제작 배경
 
 <b>건강 염려증</b>은 자신에게 심각한 질병이 있다는 생각과 불안감을 갖고 집착하는 상태입니다. 사소한 신체증상을 지나치게 비관적으로 받아들이고 의사의 진단도 믿지 않으며, 불안감 때문에 이 병원 저 병원 돌아다니며 각종 검사를 받습니다. 저희의 서비스는 이러한 건강 염려증 문제를 해결하기 위해 테스트를 통해 자신의 상태를 확인하고 필요한 조치를 취하여 더 건강한 삶을 살아가도록 방향지침을 제공합니다.
+
+<br/>
 
 ## 🎯 해결하고자 하는 문제
 
@@ -36,6 +44,8 @@ UN의 지속가능발전목표(SDGs) 중 3번째 목표인 "건강과 웰빙" �
     - 산재된 건강 정보 관리
     - 비일관적인 생활습관 기록
     - 예방적 건강관리의 부재
+  
+<br/>
 
 ## 💡 솔루션
 
@@ -56,6 +66,8 @@ CareMe는 다음과 같은 기능을 통해 건강염려증 해소와 지속가�
     - 예방접종 현황 확인
     - 영양제 복용 관리
 
+<br/>
+
 ## 💪 차별성
 
 1. 건강염려증에 특화된 기능
@@ -66,7 +78,9 @@ CareMe는 다음과 같은 기능을 통해 건강염려증 해소와 지속가�
     - 신체적 건강과 정신적 웰빙의 통합 관리
     - 예방적 건강관리와 건강 불안 해소의 결합
     - 개인 맞춤형 건강관리 솔루션 제공
-  
+
+<br/>
+
 ## 💊SDGs 3번 목표(Good-Health and Well-Being) 달성 방안
 
 1. 보편적 의료보장 달성
@@ -84,6 +98,8 @@ CareMe는 다음과 같은 기능을 통해 건강염려증 해소와 지속가�
 5. 의료정보 접근성 개선
 - 기능: 개인 건강데이터 분석, 맞춤형 건강정보 제공
 - 목표: 의료정보 불평등 해소, 건강관리 역량 강화
+
+<br/>
 
 ## 👋🏻 팀원 소개
 
@@ -107,6 +123,7 @@ CareMe는 다음과 같은 기능을 통해 건강염려증 해소와 지속가�
 |[<img src="https://github.com/hjinshin.png" width="100px">](https://github.com/yso8296)|
 </div>
 
+
 ## 🛠 기술 스택
 
 - Java 21, Spring Boot 3.x
@@ -114,6 +131,8 @@ CareMe는 다음과 같은 기능을 통해 건강염려증 해소와 지속가�
 - Docker
 - Github Actions
 - AWS (EC2, RDS)
+
+<br/>
 
 ## 🔍 주요 기능
 
@@ -123,7 +142,7 @@ CareMe는 다음과 같은 기능을 통해 건강염려증 해소와 지속가�
 
 <img src="https://github.com/user-attachments/assets/21cf80c9-962a-4196-9edf-7c5b9bd65a23"  width="200" height="400"/>
 
-
+<br/> <br/>
 
 2. 건강 염려증 테스트
 
@@ -131,13 +150,14 @@ CareMe는 다음과 같은 기능을 통해 건강염려증 해소와 지속가�
 
 <img src="https://github.com/user-attachments/assets/49bd19d0-f2e7-487a-8a14-028561ca3fb9"  width="400" height="400"/>
 
+<br/> <br/>
 
 3. 메인 화면
 메인화면에서 자신의 테스트 결과, 추천 의료제도, 추천 예방접종, 추천 건강검진 화면으로 이동할 수 있습니다.
 
 <img src="https://github.com/user-attachments/assets/448db927-5226-4e37-b4ed-03a821de3285"  width="200" height="400"/>
 
-
+<br/> <br/>
 
 4. 추천 의료제도 확인
 
@@ -145,7 +165,7 @@ CareMe는 다음과 같은 기능을 통해 건강염려증 해소와 지속가�
 
 <img src="https://github.com/user-attachments/assets/7a3009dd-dc27-430a-b7e7-f0a1cf26400f"  width="200" height="400"/>
 
-
+<br/> <br/>
 
 5. 추천 건강검진 확인
 
@@ -153,6 +173,7 @@ CareMe는 다음과 같은 기능을 통해 건강염려증 해소와 지속가�
    
 <img src="https://github.com/user-attachments/assets/1fbc2546-93b4-40b3-82c5-05dc81a420e5"  width="200" height="400"/>
 
+<br/> <br/>
 
 6. 추천 예방접종 확인
 
@@ -160,7 +181,7 @@ CareMe는 다음과 같은 기능을 통해 건강염려증 해소와 지속가�
 
 <img src="https://github.com/user-attachments/assets/20485339-dbf5-462b-9198-aedf1a434c87"  width="200" height="400"/>
 
-
+<br/> <br/>
 
 7. 건강염려증 테스트 결과 확인
 
@@ -168,6 +189,7 @@ CareMe는 다음과 같은 기능을 통해 건강염려증 해소와 지속가�
 
 <img src="https://github.com/user-attachments/assets/ca03be09-01a6-4f2e-8ff4-0cf09ab38909"  width="400" height="400"/>
 
+<br/> <br/>
 
 8. 병원 방문 기록
 
@@ -175,7 +197,7 @@ CareMe는 다음과 같은 기능을 통해 건강염려증 해소와 지속가�
 
 <img src="https://github.com/user-attachments/assets/686e34a8-a885-4514-ac00-c61f2533bc0f"  width="400" height="400"/>
 
-
+<br/> <br/>
 
 9. 건강 상태 통계
 
@@ -183,6 +205,7 @@ CareMe는 다음과 같은 기능을 통해 건강염려증 해소와 지속가�
 
 <img src="https://github.com/user-attachments/assets/33c873f8-eff3-450f-bc98-2f84e4af07ec"  width="400" height="400"/>
 
+<br/> <br/>
 
 10. 챗봇
 
@@ -199,11 +222,13 @@ CareMe는 다음과 같은 기능을 통해 건강염려증 해소와 지속가�
 4. Docker Hub 푸시
 5. EC2 인스턴스 배포
 
+
 ## **🏛️**시스템 아키텍처
     
 ![image](https://github.com/user-attachments/assets/43451fdd-7941-4669-9b83-73889f1722b9)
 
-    
+<br/>
+
 ## **💾**ERD
     
 ![image](https://github.com/user-attachments/assets/4e45ca25-adf4-4e08-a524-029cacc160f9)
