@@ -42,7 +42,7 @@ public class MemberController {
                 .body(MemberResponse.Login.from(memberInfo));
     }
 
-    @GetMapping("/api/member")
+    @GetMapping("")
     public MemberResponse.Info getMemberInfo(@Authenticate Long memberId) {
         Info model = memberService.getMemberInfo(memberId);
         return MemberResponse.Info.from(model);
