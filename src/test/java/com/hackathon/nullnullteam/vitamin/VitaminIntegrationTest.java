@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
@@ -83,10 +84,14 @@ class VitaminIntegrationTest {
                 "1정"
         );
 
+        MockHttpServletRequest req = new MockHttpServletRequest();
+        req.setAttribute("userId", "93");
+
         // when & then
         mockMvc.perform(post("/api/vitamin")
+                        .requestAttr("userId", "93")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .param("memberId", testMember.getId().toString())
+
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.message").value("비타민 복용 현황을 추가하였습니다."))
@@ -96,9 +101,13 @@ class VitaminIntegrationTest {
     @Test
     @DisplayName("전체 비타민 복용 기록 조회")
     void getAllVitaminsTest() throws Exception {
+
+        MockHttpServletRequest req = new MockHttpServletRequest();
+        req.setAttribute("userId", "93");
+
         // when & then
         mockMvc.perform(get("/api/vitamin/record")
-                        .param("memberId", testMember.getId().toString())
+                        .requestAttr("userId", "93")
                         .param("page", "0")
                         .param("size", "10")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -137,9 +146,5 @@ class VitaminIntegrationTest {
                 .andExpect(status().isNotFound())
                 .andDo(print());
     }
-
-
-
-
 
 }
