@@ -14,7 +14,7 @@ public class HospitalStatisticsCommand {
             Integer amount,
             ResultType result,
             String description,
-            LocalDate date
+            String date
     ) {
         public HospitalStatistics toEntity(Member member) {
             return HospitalStatistics.builder()
@@ -23,7 +23,7 @@ public class HospitalStatisticsCommand {
                     .amount(amount)
                     .result(result)
                     .description(description)
-                    .date(date)
+                    .date(LocalDate.parse(date))
                     .build();
         }
     }

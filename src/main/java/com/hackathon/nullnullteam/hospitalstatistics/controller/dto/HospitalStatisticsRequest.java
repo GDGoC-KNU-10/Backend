@@ -13,7 +13,7 @@ public class HospitalStatisticsRequest {
             Integer amount,
             ResultType result,
             String description,
-            LocalDate date
+            String date
     ) {
         public HospitalStatisticsCommand.Add toCommand() {
             return HospitalStatisticsCommand.Add.builder()
