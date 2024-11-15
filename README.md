@@ -15,8 +15,7 @@
 - 병원 진료 기록
 - 예방접종 현황
 - 건강검진 관리
-- FCM 푸시 알림
-
+  
 ## 🔄 CI/CD 파이프라인
 
 1. Github Actions Workflow 트리거 (dev 브랜치 push)
