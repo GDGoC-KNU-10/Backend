@@ -15,7 +15,7 @@ public class HospitalStatisticsResponse {
             Integer amount,
             ResultType result,
             String description,
-            LocalDate createdAt
+            LocalDate date
     ) {
         public static HospitalStatisticsResponse.Info from(HospitalStatisticsModel.Info model) {
             return Info.builder()
@@ -24,7 +24,7 @@ public class HospitalStatisticsResponse {
                     .amount(model.amount())
                     .result(model.result())
                     .description(model.description())
-                    .createdAt(model.createdAt())
+                    .date(model.date())
                     .build();
         }
     }

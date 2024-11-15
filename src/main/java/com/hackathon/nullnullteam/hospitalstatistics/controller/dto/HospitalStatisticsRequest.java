@@ -4,13 +4,16 @@ import com.hackathon.nullnullteam.hospitalstatistics.ResultType;
 import com.hackathon.nullnullteam.hospitalstatistics.service.dto.HospitalStatisticsCommand;
 import lombok.Builder;
 
+import java.time.LocalDate;
+
 public class HospitalStatisticsRequest {
     @Builder
     public record Add(
             String name,
             Integer amount,
             ResultType result,
-            String description
+            String description,
+            LocalDate date
     ) {
         public HospitalStatisticsCommand.Add toCommand() {
             return HospitalStatisticsCommand.Add.builder()
@@ -18,6 +21,7 @@ public class HospitalStatisticsRequest {
                     .amount(amount)
                     .result(result)
                     .description(description)
+                    .date(date)
                     .build();
         }
     }

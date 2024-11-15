@@ -5,13 +5,16 @@ import com.hackathon.nullnullteam.hospitalstatistics.ResultType;
 import com.hackathon.nullnullteam.member.Member;
 import lombok.Builder;
 
+import java.time.LocalDate;
+
 public class HospitalStatisticsCommand {
     @Builder
     public record Add(
             String name,
             Integer amount,
             ResultType result,
-            String description
+            String description,
+            LocalDate date
     ) {
         public HospitalStatistics toEntity(Member member) {
             return HospitalStatistics.builder()
@@ -20,6 +23,7 @@ public class HospitalStatisticsCommand {
                     .amount(amount)
                     .result(result)
                     .description(description)
+                    .date(date)
                     .build();
         }
     }
