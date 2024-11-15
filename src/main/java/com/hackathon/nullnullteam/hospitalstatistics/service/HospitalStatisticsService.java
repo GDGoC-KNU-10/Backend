@@ -2,6 +2,7 @@ package com.hackathon.nullnullteam.hospitalstatistics.service;
 
 import com.hackathon.nullnullteam.global.constants.DateConstants;
 import com.hackathon.nullnullteam.hospitalstatistics.HospitalStatistics;
+import com.hackathon.nullnullteam.hospitalstatistics.controller.dto.HospitalStatisticsResponse;
 import com.hackathon.nullnullteam.hospitalstatistics.service.dto.HospitalStatisticsCommand;
 import com.hackathon.nullnullteam.hospitalstatistics.service.dto.HospitalStatisticsModel;
 import com.hackathon.nullnullteam.member.Member;
@@ -63,5 +64,26 @@ public class HospitalStatisticsService {
         Page<HospitalStatistics> hospitalStatistics =
                 hospitalStatisticsReaderService.getMonthlyByMember(member, startDate, endDate, pageable);
         return hospitalStatistics.map(HospitalStatisticsModel.Info::from);
+    }
+
+    @Transactional(readOnly = true)
+    public HospitalStatisticsModel.Info getDailyHospitalStatistics(Long memberId, LocalDate date) {
+        Member member = memberReaderService.getMemberById(memberId);
+        HospitalStatistics statistics =
+                hospitalStatisticsReaderService.getByMemberAndDate(member, date);
+        return HospitalStatisticsModel.Info.from(statistics);
+    }
+
+    public HospitalStatisticsResponse.Monthly getMonthlyStatistics(Long memberId, LocalDate date) {
+        Member member = memberReaderService.getMemberById(memberId);
+
+        LocalDateTime startDate = date == null ?
+                DateConstants.DEFAULT_START_DATE :
+                date.withDayOfMonth(1).atStartOfDay();
+        LocalDateTime endDate = date == null ?
+                LocalDateTime.now() :
+                date.withDayOfMonth(date.lengthOfMonth()).atTime(LocalTime.MAX);
+
+        return hospitalStatisticsReaderService.getMonthlyStatistics(member, startDate, endDate);
     }
 }

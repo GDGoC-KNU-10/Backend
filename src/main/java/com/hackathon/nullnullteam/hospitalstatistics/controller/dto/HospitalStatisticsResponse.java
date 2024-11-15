@@ -39,4 +39,22 @@ public class HospitalStatisticsResponse {
                     .build();
         }
     }
+
+    @Builder
+    public record Monthly(
+            Long totalCount,
+            Long highCount,
+            Long mediumCount,
+            Long lowCount
+    ) {
+        public static Monthly from(Long total, Long high, Long medium, Long low) {
+            return Monthly.builder()
+                    .totalCount(total)
+                    .highCount(high)
+                    .mediumCount(medium)
+                    .lowCount(low)
+                    .build();
+        }
+    }
+
 }

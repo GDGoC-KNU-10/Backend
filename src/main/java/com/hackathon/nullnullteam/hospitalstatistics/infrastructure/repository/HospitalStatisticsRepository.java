@@ -8,7 +8,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 
 public interface HospitalStatisticsRepository extends JpaRepository<HospitalStatistics, Long> {
     Page<HospitalStatistics> findAllByMember(Member member, Pageable pageable);
@@ -20,4 +23,13 @@ public interface HospitalStatisticsRepository extends JpaRepository<HospitalStat
             @Param("endDate") LocalDateTime endDate,
             Pageable pageable
     );
+
+    @Query("SELECT h FROM HospitalStatistics h WHERE h.member = :member AND h.createdAt BETWEEN :startDate AND :endDate")
+    List<HospitalStatistics> findAllByMemberAndCreatedAtBetween(
+            @Param("member") Member member,
+            @Param("startDate") LocalDateTime startDate,
+            @Param("endDate") LocalDateTime endDate
+    );
+
+    Optional<HospitalStatistics> findByMemberAndDate(Member member, LocalDate date);
 }

@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -61,15 +62,20 @@ public class HospitalStatisticsController {
     }
 
     @GetMapping("/record/monthly")
-    public PagingResponse<HospitalStatisticsResponse.Info> getMonthlyHospitalStatistics(
+    public HospitalStatisticsResponse.Monthly getMonthlyStatistics(
             @Authenticate Long memberId,
-            @PageableDefault(page = 0, size = 10) Pageable pageable,
             @RequestParam(name = "date", required = false) LocalDate date
     ) {
-        Page<HospitalStatisticsModel.Info> monthlyHospitalStatistics =
-                hospitalStatisticsService.getMonthlyHospitalStatistics(memberId, date, pageable);
-        HospitalStatisticsResponse.Infos infoList =
-                HospitalStatisticsResponse.Infos.from(monthlyHospitalStatistics);
-        return PagingResponse.from(infoList.infos());
+        return hospitalStatisticsService.getMonthlyStatistics(memberId, date);
+    }
+
+    @GetMapping("/day")
+    public HospitalStatisticsResponse.Info getDailyHospitalStatistics(
+            Long memberId,
+            @RequestParam("date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date
+    ) {
+        HospitalStatisticsModel.Info dailyStatistic =
+                hospitalStatisticsService.getDailyHospitalStatistics(memberId, date);
+        return HospitalStatisticsResponse.Info.from(dailyStatistic);
     }
 }
