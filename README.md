@@ -4,7 +4,6 @@
 
 ![image](https://github.com/user-attachments/assets/c1a0ae65-0d17-4021-ab96-9c443436f910)
 
-
 ## 🏥CareMe의 한줄 소개
 
 UN의 지속가능발전목표(SDGs) 중 3번째 목표인 "건강과 웰빙" 달성과 현대인의 건강염려증 해소를 위해 시작된 CareMe는 체계적인 건강관리와 심리적 안정을 동시에 지원하는 플랫폼입니다.
@@ -85,6 +84,28 @@ CareMe는 다음과 같은 기능을 통해 건강염려증 해소와 지속가�
 5. 의료정보 접근성 개선
 - 기능: 개인 건강데이터 분석, 맞춤형 건강정보 제공
 - 목표: 의료정보 불평등 해소, 건강관리 역량 강화
+
+## 👋🏻 팀원 소개
+
+<div align="center">
+
+### BE
+
+|김건|유승욱|
+|:-----:|:---:|
+|[<img src="https://github.com/gunGeongun.png" width="100px">](https://github.com/gunGeongun)|[<img src="https://github.com/yso8296.png" width="100px">](https://github.com/yso8296)|
+
+### ANDROID
+  
+|김예진|임준범|
+|:-----:|:---:|
+|[<img src="https://github.com/kimye702.png" width="100px">](https://github.com/kimye702)|[<img src="https://github.com/junbeom1111.png" width="100px">](https://github.com/junbeom1111)|
+
+### DESIGNER
+|손희주|
+|:-----:|
+|[<img src="https://github.com/hjinshin.png" width="100px">](https://github.com/yso8296)|
+</div>
 
 ## 🛠 기술 스택
 
