@@ -35,6 +35,7 @@ public class AnxietyResultRecordService {
         Member member = memberReaderService.getMemberById(memberId);
         AnxietyResultRecord anxietyResultRecord = command.toEntity(member);
         anxietyResultRecordWriterService.save(anxietyResultRecord);
+        member.setAnxietyLevel(command.score());
 
         // 백신 추천 정보를 조회
         List<VaccinationRecommendDto> vaccinationRecommendDtos = vaccinationRecommendRepository.findByAgeRange(

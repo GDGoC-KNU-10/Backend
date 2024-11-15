@@ -15,12 +15,12 @@ public enum AnxietyLevel {
         this.description = description;
     }
 
-    public static AnxietyLevel fromString(int count) {
-        if (count <= 5) {
+    public static AnxietyLevel fromString(int score) {
+        if (score <= 50) {
             return LOW;
-        } else if (count <= 10) {
+        } else if (score <= 70) {
             return MEDIUM;
-        } else if (count <= 15) {
+        } else if (score <= 90) {
             return HIGH;
         }
         return VERY_HIGH;

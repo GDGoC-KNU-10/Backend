@@ -7,12 +7,12 @@ public class AnxietyResultRecordRequest {
 
     @Builder
     public record Result(
-        int count
+        int score
     ) {
 
         public AnxietyResultRecordCommand.Result toCommand() {
             return AnxietyResultRecordCommand.Result.builder()
-                .count(count)
+                .score(score)
                 .build();
         }
     }

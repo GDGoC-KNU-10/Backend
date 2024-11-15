@@ -9,14 +9,14 @@ public class AnxietyResultRecordCommand {
 
     @Builder
     public record Result(
-        int count
+        int score
     ) {
 
         public AnxietyResultRecord toEntity(Member member) {
             return AnxietyResultRecord.builder()
                 .member(member)
-                .anxietyLevel(AnxietyLevel.fromString(count))
-                .anxietyScore(count)
+                .anxietyLevel(AnxietyLevel.fromString(score))
+                .anxietyScore(score)
                 .build();
         }
     }
