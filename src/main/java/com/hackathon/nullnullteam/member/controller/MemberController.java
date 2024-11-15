@@ -2,6 +2,7 @@ package com.hackathon.nullnullteam.member.controller;
 
 import com.hackathon.nullnullteam.global.annotation.Authenticate;
 import com.hackathon.nullnullteam.global.dto.GlobalResponse;
+import com.hackathon.nullnullteam.member.controller.dto.MemberRequest;
 import com.hackathon.nullnullteam.member.controller.dto.MemberResponse;
 import com.hackathon.nullnullteam.member.service.MemberService;
 import com.hackathon.nullnullteam.member.service.dto.MemberModel;
@@ -10,8 +11,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -31,10 +34,8 @@ public class MemberController {
     }*/
 
     @GetMapping("/callback")
-    public ResponseEntity<MemberResponse.Login> registerMember(
-            @RequestParam("token") String token
-    ) {
-        MemberModel.Login memberInfo = memberService.register(token);
+    public ResponseEntity<MemberResponse.Login> registerMember(@RequestBody MemberRequest.Info request) {
+        MemberModel.Login memberInfo = memberService.register(request.toCommand());
 
 
         return ResponseEntity.status(HttpStatus.CREATED)

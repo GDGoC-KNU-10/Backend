@@ -6,6 +6,7 @@ import com.hackathon.nullnullteam.member.infrastructure.apicaller.MemberApiCalle
 import com.hackathon.nullnullteam.member.infrastructure.apicaller.dto.KakaoAccount;
 import com.hackathon.nullnullteam.member.infrastructure.apicaller.dto.TokenInfoResponse;
 import com.hackathon.nullnullteam.member.infrastructure.apicaller.dto.UserInfoResponse;
+import com.hackathon.nullnullteam.member.service.dto.MemberCommand;
 import com.hackathon.nullnullteam.member.service.dto.MemberModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,18 +27,18 @@ public class MemberService {
     }
 
     @Transactional
-    public MemberModel.Login register(String token) {
-        // 토큰 발급
+    public MemberModel.Login register(MemberCommand.Info command) {
+       /* // 토큰 발급
         String kakaoToken = token;
 
         // 카카오 사용자 정보 요청
         UserInfoResponse userInfoResponse = memberApiCaller.extractUserInfo(kakaoToken);
-        KakaoAccount kakaoAccount = userInfoResponse.kakaoAccount();
+        KakaoAccount kakaoAccount = userInfoResponse.kakaoAccount();*/
 
         // Users 저장 및 중복 체크
-        Member member = memberReaderService.findByEmail(kakaoAccount.email())
+        Member member = memberReaderService.findByEmail(command.email())
                 .orElseGet(() -> {
-                    Member newMember = memberWriterService.saveMember(userInfoResponse);
+                    Member newMember = memberWriterService.saveMember(command);
                     return newMember;
                 });
 

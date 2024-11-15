@@ -14,7 +14,7 @@ public enum Gender {
     }
 
     public static Gender fromString(String gender) {
-        if (gender.equals("male")) {
+        if (gender.equals("FEMALE")) {
             return MALE;
         }
         return FEMALE;

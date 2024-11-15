@@ -34,4 +34,6 @@ public class Member extends BaseTimeEntity {
 
     @Enumerated(EnumType.STRING)
     private AnxietyLevel anxietyLevel;
+
+    private String profile;
 }
