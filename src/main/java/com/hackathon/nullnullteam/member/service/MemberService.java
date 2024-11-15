@@ -26,12 +26,12 @@ public class MemberService {
     }
 
     @Transactional
-    public MemberModel.Login register(String code) {
+    public MemberModel.Login register(String token) {
         // 토큰 발급
-        TokenInfoResponse tokenResponse = memberApiCaller.getAccessToken(code);
-        String accessToken = tokenResponse.accessToken();
+        String kakaoToken = token;
+
         // 카카오 사용자 정보 요청
-        UserInfoResponse userInfoResponse = memberApiCaller.extractUserInfo(accessToken);
+        UserInfoResponse userInfoResponse = memberApiCaller.extractUserInfo(kakaoToken);
         KakaoAccount kakaoAccount = userInfoResponse.kakaoAccount();
 
         // Users 저장 및 중복 체크
@@ -41,10 +41,10 @@ public class MemberService {
                     return newMember;
                 });
 
-        String token = jwtProvider.createToken(member.getId(), member.getEmail());
-        System.out.println(token);
+        String accessToken = jwtProvider.createToken(member.getId(), member.getEmail());
+        System.out.println(accessToken);
 
-        return MemberModel.Login.from(token);
+        return MemberModel.Login.from(accessToken);
     }
 
     public MemberModel.Info getMemberInfo(Long memberId) {

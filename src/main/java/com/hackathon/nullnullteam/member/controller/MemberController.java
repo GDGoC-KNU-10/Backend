@@ -21,20 +21,20 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @GetMapping("/login")
+    /*@GetMapping("/login")
     public ResponseEntity<Void> login() {
         String loginUrl = memberService.getCodeUrl();
 
         return ResponseEntity.status(HttpStatus.SEE_OTHER)
                 .header("location", loginUrl)
                 .build();
-    }
+    }*/
 
     @GetMapping("/callback")
     public ResponseEntity<MemberResponse.Login> registerMember(
-            @RequestParam("code") String code
+            @RequestParam("token") String token
     ) {
-        MemberModel.Login memberInfo = memberService.register(code);
+        MemberModel.Login memberInfo = memberService.register(token);
 
 
         return ResponseEntity.status(HttpStatus.CREATED)

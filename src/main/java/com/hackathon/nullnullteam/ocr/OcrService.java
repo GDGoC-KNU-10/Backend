@@ -72,6 +72,12 @@ public class OcrService {
         ResponseEntity<String> response = restTemplate.exchange(ocrUrl, HttpMethod.POST, requestEntity, String.class);
         JSONObject object = new JSONObject(response.getBody());
         List<String> text = extractInferText(object);
+
+        StringBuilder sb = new StringBuilder();
+        for (String t : text) {
+            sb.append(t + " ");
+        }
+        System.out.println(sb.toString());
         return text;
     }
 
