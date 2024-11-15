@@ -4,7 +4,6 @@
 
 ![image](https://github.com/user-attachments/assets/c1a0ae65-0d17-4021-ab96-9c443436f910)
 
-
 ## 🏥CareMe의 한줄 소개
 
 UN의 지속가능발전목표(SDGs) 중 3번째 목표인 "건강과 웰빙" 달성과 현대인의 건강염려증 해소를 위해 시작된 CareMe는 체계적인 건강관리와 심리적 안정을 동시에 지원하는 플랫폼입니다.
@@ -86,6 +85,28 @@ CareMe는 다음과 같은 기능을 통해 건강염려증 해소와 지속가�
 - 기능: 개인 건강데이터 분석, 맞춤형 건강정보 제공
 - 목표: 의료정보 불평등 해소, 건강관리 역량 강화
 
+## 👋🏻 팀원 소개
+
+<div align="center">
+
+### BE
+
+|김건|유승욱|
+|:-----:|:---:|
+|[<img src="https://github.com/gunGeongun.png" width="100px">](https://github.com/gunGeongun)|[<img src="https://github.com/yso8296.png" width="100px">](https://github.com/yso8296)|
+
+### ANDROID
+  
+|김예진|임준범|
+|:-----:|:---:|
+|[<img src="https://github.com/kimye702.png" width="100px">](https://github.com/kimye702)|[<img src="https://github.com/junbeom1111.png" width="100px">](https://github.com/junbeom1111)|
+
+### DESIGNER
+|손희주|
+|:-----:|
+|[<img src="https://github.com/hjinshin.png" width="100px">](https://github.com/yso8296)|
+</div>
+
 ## 🛠 기술 스택
 
 - Java 21, Spring Boot 3.x
@@ -95,7 +116,6 @@ CareMe는 다음과 같은 기능을 통해 건강염려증 해소와 지속가�
 - AWS (EC2, RDS)
 
 ## 🔍 주요 기능
-기능 소개
 
 1. 회원가입 및 로그인
 
@@ -109,45 +129,68 @@ CareMe는 다음과 같은 기능을 통해 건강염려증 해소와 지속가�
 
 건강 염려증 테스트를 통해 자신의 건강민감도 정도를 확인할 수 있습니다.
 
-![image](https://github.com/user-attachments/assets/a8d3e58d-83da-4c43-86df-237d26455351)
-![image](https://github.com/user-attachments/assets/60ae1e75-1ad5-4eb0-be1c-fc8d036766df)
+<img src="https://github.com/user-attachments/assets/49bd19d0-f2e7-487a-8a14-028561ca3fb9"  width="400" height="400"/>
 
 
 3. 메인 화면
+메인화면에서 자신의 테스트 결과, 추천 의료제도, 추천 예방접종, 추천 건강검진 화면으로 이동할 수 있습니다.
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/788d6b2b-1706-4c45-b03d-ab4c030b3915/0c9fb5b6-4f0f-4da0-9ed8-5461f4419584/image.png)
+<img src="https://github.com/user-attachments/assets/448db927-5226-4e37-b4ed-03a821de3285"  width="200" height="400"/>
 
-4. 추천 의료제도 확인 
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/788d6b2b-1706-4c45-b03d-ab4c030b3915/0343f51b-e3c1-4f4f-b64a-09ad48551bcb/image.png)
 
-5. 추천 건강검진 확인 
+4. 추천 의료제도 확인
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/788d6b2b-1706-4c45-b03d-ab4c030b3915/d4b01aae-1ff7-48c6-8211-2adb9e5321dd/image.png)
+건강 염려증 테스트 결과를 토대로 추천 의료제도 목록을 확인할 수 있습니다.
 
-6. 추천 예방접종 확인 
+<img src="https://github.com/user-attachments/assets/7a3009dd-dc27-430a-b7e7-f0a1cf26400f"  width="200" height="400"/>
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/788d6b2b-1706-4c45-b03d-ab4c030b3915/e860f6cd-6236-462e-9b75-efab16d506a5/image.png)
+
+
+5. 추천 건강검진 확인
+
+건강 염려증 테스트 결과를 토대로 추천 건강검진 목록을 확인할 수 있습니다.
+   
+<img src="https://github.com/user-attachments/assets/1fbc2546-93b4-40b3-82c5-05dc81a420e5"  width="200" height="400"/>
+
+
+6. 추천 예방접종 확인
+
+건강 염려증 테스트 결과를 토대로 추천 예방접종 목록을 확인할 수 있습니다.
+
+<img src="https://github.com/user-attachments/assets/20485339-dbf5-462b-9198-aedf1a434c87"  width="200" height="400"/>
+
+
 
 7. 건강염려증 테스트 결과 확인
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/788d6b2b-1706-4c45-b03d-ab4c030b3915/b7dcb41f-f8af-46cc-beb5-4675d360cd1d/image.png)
+건강염려증 테스트 결과와 그래프를 확인할 수 있습니다.
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/788d6b2b-1706-4c45-b03d-ab4c030b3915/904a904d-a9a2-4729-8b82-6591fa75afd9/image.png)
+<img src="https://github.com/user-attachments/assets/ca03be09-01a6-4f2e-8ff4-0cf09ab38909"  width="400" height="400"/>
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/788d6b2b-1706-4c45-b03d-ab4c030b3915/2065a289-d76c-4906-b39c-c52884e919c3/image.png)
 
 8. 병원 방문 기록
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/788d6b2b-1706-4c45-b03d-ab4c030b3915/cbadabb7-23bf-4915-83cd-452b193bef3d/image.png)
+병원에 방문한 날짜 별로 상세 정보를 기록하고 통계를 확인할 수 있습니다.
 
-9. 통계
+<img src="https://github.com/user-attachments/assets/686e34a8-a885-4514-ac00-c61f2533bc0f"  width="400" height="400"/>
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/788d6b2b-1706-4c45-b03d-ab4c030b3915/e8a3c0ce-98d6-452a-bc84-e1d2b8c6c1a5/image.png)
+
+
+9. 건강 상태 통계
+
+날짜 별로 자신의 건강상태를 기록하고 통계를 확인할 수 있습니다.
+
+<img src="https://github.com/user-attachments/assets/33c873f8-eff3-450f-bc98-2f84e4af07ec"  width="400" height="400"/>
+
 
 10. 챗봇
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/788d6b2b-1706-4c45-b03d-ab4c030b3915/ab3a1f77-c107-496e-8a85-37639c133220/image.png)
+챗봇과의 대화를 통해 자신의 증상이나 현재 고민에 대한 상담을 받을 수 있습니다.
+
+<img src="https://github.com/user-attachments/assets/785dfb52-56b7-4374-8f10-777925a20514"  width="600" height="400"/>
+
+
 ## 🔄 CI/CD 파이프라인
 
 1. Github Actions Workflow 트리거 (dev 브랜치 push)
