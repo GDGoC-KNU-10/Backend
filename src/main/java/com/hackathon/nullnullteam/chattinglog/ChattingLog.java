@@ -24,7 +24,7 @@ public class ChattingLog {
 
     private String content;
 
-    @OneToOne(mappedBy = "chatting_room")
+    @OneToOne(mappedBy = "chattingLog")
     private ChattingRoom chattingRoom;
 
 
